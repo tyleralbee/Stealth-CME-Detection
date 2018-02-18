@@ -15,7 +15,7 @@
  - SDO EVE telemetry 
  - Provided by LASP (Laboratory for Atmospheric and Space Physics at CU)
  - http://lasp.colorado.edu/home/eve/data/data-access/
- - We have downloaded chunks, but not all of it yet.
+ - We have downloaded chunks, but not all of it ye
  - Shawn works at LASP, so he has permenent access to this data
 
 **Proposed work**: 
@@ -29,8 +29,9 @@
  - Spectral measurements span 6-105 nm up to May 26, 2014 when the MEGS-A spectrograph had a power anomaly and was permanently decommissioned. After that, spectral measurements only span 33-105 nm. 
 
 **Data integration**:
+ - (None planned)
 
-etc.
+
 
 **List of tool(s) we intend to use**:
  - Python *(savReaderWriter, pandas)*
