@@ -38,4 +38,4 @@
  - IDL
  - [LaTiS](https://github.com/latis-data/latis) *(a software framework for data access, processing, and output created and maintained by the Web Team at LASP--it uses a "functional data model" and Shawn helps develop it)*
 
-**Evaluation**: How you can evaluate your results 
+**Evaluation**: We can sanity check our findings against the SOHO LASCO CME catalog, but our work will largely be evaluated by the scientists who are leading this research (i.e. James Mason of Goddard and Don Woodraska of LASP).
