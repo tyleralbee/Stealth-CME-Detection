@@ -20,13 +20,19 @@
 
 **Proposed work**: what do you need to do?
 
-**Data cleaning**:
+**Data cleaning**: 
+ - The MEGS-B spectrograph has limited exposure of about 3 hours per day normally to prevent rapid degradation of the detector, so we'll clean out the null values.
 
-**Data preprocessing**:
+**Data preprocessing**: 
+ - Spectral measurements span 6-105 nm up to May 26, 2014 when the MEGS-A spectrograph had a power anomaly and was permanently decommissioned. After that, spectral measurements only span 33-105 nm. 
 
 **Data integration**:
 
 etc.
 
-List of tool(s) you intend to use
+**List of tool(s) we intend to use**:
+ - Python (savReaderWriter, pandas)
+ - IDL
+ - LaTiS (a software framework for data access, processing, and output created and maintained by the Web Team at LASP--it uses a "functional data model" and Shawn helps develop it)
+
 Evaluation: How you can evaluate your results 
