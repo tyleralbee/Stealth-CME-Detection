@@ -18,7 +18,9 @@
  - We have downloaded chunks, but not all of it yet.
  - Shawn works at LASP, so he has permenent access to this data
 
-**Proposed work**: what do you need to do?
+**Proposed work**: 
+ - To detect coronal dimming events in SDO/EVE emission line time series data without the use of GOES solar flare event times to trigger the search.
+ - Characterize the detected dimming events in terms of slope and depth. 
 
 **Data cleaning**: 
  - The MEGS-B spectrograph has limited exposure of about 3 hours per day normally to prevent rapid degradation of the detector, so we'll clean out the null values.
