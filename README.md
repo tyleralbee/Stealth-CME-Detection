@@ -12,9 +12,11 @@
  - SOHO LASCO CME [catalog](https://cdaw.gsfc.nasa.gov/CME_list/UNIVERSAL/2010_05/univ2010_05.html)
 
 **Datasets**: 
-List of datasets to use
-Where found (URL and who is supplying the data, e.g., NASA) 
-Whether it you have it downloaded (on who’s machine)
+ - SDO EVE telemetry 
+ - Provided by LASP (Laboratory for Atmospheric and Space Physics at CU)
+ - http://lasp.colorado.edu/home/eve/data/data-access/
+ - We have downloaded chunks, but not all of it yet.
+ - Shawn works at LASP, so he has permenent access to this data
 
 **Proposed work**: what do you need to do?
 
