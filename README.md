@@ -33,6 +33,6 @@ etc.
 **List of tool(s) we intend to use**:
  - Python *(savReaderWriter, pandas)*
  - IDL
- - LaTiS *(a software framework for data access, processing, and output created and maintained by the Web Team at LASP--it uses a "functional data model" and Shawn helps develop it)*
+ - [LaTiS](https://github.com/latis-data/latis) *(a software framework for data access, processing, and output created and maintained by the Web Team at LASP--it uses a "functional data model" and Shawn helps develop it)*
 
 **Evaluation**: How you can evaluate your results 
