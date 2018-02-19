@@ -15,7 +15,7 @@
  - SDO EVE telemetry 
  - Provided by LASP (Laboratory for Atmospheric and Space Physics at CU)
  - http://lasp.colorado.edu/home/eve/data/data-access/
- - We have downloaded chunks, but not all of it ye
+ - We have downloaded chunks, but not all of it yet
  - Shawn works at LASP, so he has permenent access to this data
 
 **Proposed work**: 
