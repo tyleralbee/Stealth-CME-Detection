@@ -1,0 +1,62 @@
+# default seaborn aesthetic
+# darkgrid + deep palette + notebook context
+
+axes.edgecolor: white
+axes.facecolor: black
+axes.grid: False
+axes.labelcolor: white
+axes.labelsize: 18
+axes.linewidth: 1
+axes.prop_cycle: cycler('color', ['30bbff', 'ff6b51', 'ffc851', '7de524', 'dbdbdb', 'ff00f3'])
+axes.titlesize: 24
+
+figure.facecolor: black
+figure.figsize: 8.0, 5.5
+figure.subplot.bottom: 0.15
+savefig.dpi: 80
+
+savefig.transparent: True
+
+font.family: sans-serif
+font.sans-serif: Arial, Liberation Sans, DejaVu Sans, Bitstream Vera Sans, sans-serif
+text.color: white
+
+image.cmap: Greys
+
+legend.fontsize: 14
+legend.frameon: False
+legend.numpoints: 1
+legend.scatterpoints: 1
+
+lines.linewidth: 2
+lines.markeredgewidth: 0
+lines.markersize: 7
+lines.solid_capstyle: round
+
+patch.facecolor: 4C72B0
+patch.linewidth: .3
+
+xtick.color: white
+xtick.direction: in
+xtick.labelsize: 16
+xtick.top: True
+xtick.major.top: True
+xtick.major.bottom: True
+xtick.major.pad: 7
+xtick.major.size: 10
+xtick.major.width: 1
+xtick.minor.size: 5
+xtick.minor.width: 1
+xtick.minor.pad: 7
+xtick.minor.visible: True
+
+ytick.color: white
+ytick.direction: in
+ytick.labelsize: 16
+ytick.right: True
+ytick.major.pad: 7
+ytick.major.size: 10
+ytick.major.width: 1
+ytick.minor.size: 5
+ytick.minor.visible: True
+ytick.minor.width: 1
