@@ -114,6 +114,10 @@ def godsPlan(start_timestamp='2010-08-07 17:12:11', end_timestamp='2010-08-07 21
         for i, column in enumerate(ds1):
             dsColumn1 = ds1[column]
             dsColumn2 = ds2[column]
+
+            dsColumn1.reset_index(drop=True, inplace=True) # prevent NaNs from appearing in join
+            dsColumn2.reset_index(drop=True, inplace=True) # prevent NaNs from appearing in join
+
             n = int(dsColumn1.count())  # TODO: assert that both columns have same count?
             meanA = float(dsColumn1.mean())
             meanB = float(dsColumn2.mean())
@@ -121,8 +125,7 @@ def godsPlan(start_timestamp='2010-08-07 17:12:11', end_timestamp='2010-08-07 21
             stdB = float(dsColumn2.std(ddof=0))
 
             # Generate correlation output
-            dsJoined = pd.concat([dsColumn1, dsColumn2], axis=1)
-            dsJoined.columns = ['a', 'b']  # Avoids ambiguity when both attribute names are the same
+            dsJoined = pd.DataFrame({'a': dsColumn1, 'b': dsColumn2}) # Avoids ambiguity when both attribute names are the same
             numerator = 0.0  # Stores summation of (a_i - meanA)(b_i - meanB)
             denominator = n * stdA * stdB
 
@@ -135,7 +138,6 @@ def godsPlan(start_timestamp='2010-08-07 17:12:11', end_timestamp='2010-08-07 21
             totalCorrelationCoefficient = totalCorrelationCoefficient + correlationCoefficient
 
         print(totalCorrelationCoefficient)
-
 
         startRow = startRow + 60 # advance time window by 1 hour
         endRow = endRow + 60     # advance time window by 1 hour
