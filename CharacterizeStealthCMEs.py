@@ -32,16 +32,17 @@ __author__ = 'Shawn Polson and Tyler Albee'
 __contact__ = 'shpo9723@colorado.edu'
 
 
-def characterize_stealth_cmes(output_path='/Users/shawnpolson/Documents/School/Spring 2018/Data Mining/StealthCMEs/PyCharm/JEDI Catalog/',
-                          verbose=True):
-    """Wrapper code for generating the dimming depth, duration, and slope for multiple stealth CME events.
+def characterizeStealthCMEs(output_path='/Users/shawnpolson/Documents/School/Spring 2018/Data Mining/StealthCMEs/PyCharm/JEDI Catalog/',
+                            eve_data='/Users/shawnpolson/Documents/School/Spring 2018/Data Mining/StealthCMEs/savesets/eve_selected_lines.csv',
+                            soho_catalog_with_stealth_column='/Users/shawnpolson/Desktop/stealth_soho_catalog_best_window.csv',
+                            verbose=True):
+
+    """Wrapper code for generating the dimming depth, duration, and slope for stealth CME events.
 
     Inputs:
-        None.
-
-    Optional Inputs:
-        output_path [str]:                                      Set to a path for saving the JEDI catalog table and processing
-                                                                summary plots. Default is '/Users/shawnpolson/Documents/School/Spring 2018/Data Mining/StealthCMEs/PyCharm/JEDI Catalog/'.
+        output_path [str]:                                      Where to output everything
+        eve_data [str]:                                         The preprocessed SDO EVE data
+        soho_catalog_with_stealth_column [str]:                 The SOHO catalog with the much anticipated "Stealth?" column
         verbose [bool]:                                         Set to log the processing messages to disk and console. Default is False.
 
     Outputs:
@@ -64,12 +65,13 @@ def characterize_stealth_cmes(output_path='/Users/shawnpolson/Documents/School/S
 
 #---------Load data sets------------------------------------------------------------------------------------------------
 
-    stealth_soho_catalog = pd.read_csv('/Users/shawnpolson/Desktop/stealth_soho_catalog_6hr_window_50-percent-FINDINGS.csv')
+    # Get SOHO catalog with the "Stealth?" column
+    stealth_soho_catalog = pd.read_csv(soho_catalog_with_stealth_column)
 
     # Get EVE level 2 extracted emission lines data
     # Load up the actual irradiance data into a pandas DataFrame
     # Declare that column 0 is the index then convert it to datetime
-    eve_lines = pd.read_csv('/Users/shawnpolson/Documents/School/Spring 2018/Data Mining/StealthCMEs/savesets/eve_selected_lines.csv', index_col=0)
+    eve_lines = pd.read_csv(eve_data, index_col=0)
     eve_lines.index = pd.to_datetime(eve_lines.index)
     print(eve_lines.info)
 
@@ -137,9 +139,14 @@ def characterize_stealth_cmes(output_path='/Users/shawnpolson/Documents/School/S
     # Start loop through all flares
     for t in range(0, len(stealth_soho_catalog)):
 
-        #----------Clip dataset to stealth CME event window-------------------------------------------------------------
+        #----------Check if this row is a stealth CME-------------------------------------------------------------------
 
         soho_row = stealth_soho_catalog.iloc[i]
+        if not soho_row['Stealth?'] == 'yes':
+            continue  # Don't characterize the CME in this row because it's not a stealth CME
+
+        #----------Clip dataset to stealth CME event window-------------------------------------------------------------
+
         date = soho_row['Date']
         time = soho_row['Time']
         dateTime = pd.to_datetime(date + 'T' + time)
@@ -368,4 +375,4 @@ def characterize_stealth_cmes(output_path='/Users/shawnpolson/Documents/School/S
 
 
 if __name__ == '__main__':
-    characterize_stealth_cmes(verbose=True)
+    characterizeStealthCMEs(verbose=True)
