@@ -1,6 +1,8 @@
 # Stealth CME Detection
 
-**Team members**: Tyler Albee, Shawn Polson
+**Team members**: 
+ - Tyler Albee 
+ - Shawn Polson
 
 **Description**: Working with data from LASP's SDO EVE instrument, which comes in the form of .fits files, the team helped with the detection and characterization of stealth CMEs. We worked under James Mason, a Postdoctoral Program Fellow at NASA's Goddard Spaceflight Center, and Don Woodraska, a professional researcher at LASP. 
 
