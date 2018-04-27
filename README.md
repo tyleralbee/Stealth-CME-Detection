@@ -5,7 +5,7 @@
  - Shawn Polson
 
 ## Description: 
-##Working with data from LASP's SDO EVE instrument, which comes in the form of .fits files, the team helped with the detection and characterization of stealth CMEs. We worked under James Mason, a Postdoctoral Program Fellow at NASA's Goddard Spaceflight Center, and Don Woodraska, a professional researcher at LASP. 
+Working with data from LASP's SDO EVE instrument, which comes in the form of .fits files, the team helped with the detection and characterization of stealth CMEs. We worked under James Mason, a Postdoctoral Program Fellow at NASA's Goddard Spaceflight Center, and Don Woodraska, a professional researcher at LASP. 
 
 In short, this project aimed to create the first ever catalog of stealth CMEs by cataloging coronal dimming events in the SDO EVE data. We were seeking to answer questions like “What proportion of our sun’s CMEs are stealth CMEs?” “How can stealth CMEs be characterized by their dimming profiles?” and “What is the risk of a stealth CME damaging Earth’s technology?” 
 
