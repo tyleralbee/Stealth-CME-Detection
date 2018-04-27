@@ -26,7 +26,7 @@ from determine_dimming_depth import determine_dimming_depth
 from determine_dimming_slope import determine_dimming_slope
 from determine_dimming_duration import determine_dimming_duration
 
-__author__ = 'James Paul Mason (and Shawn Polson and Tyler Albee)'
+__author__ = 'Shawn Polson and Tyler Albee'
 __contact__ = 'shpo9723@colorado.edu'
 
 
