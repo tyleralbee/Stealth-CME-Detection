@@ -15,7 +15,7 @@ The key result of our work is our estimation of what percentage of the Sun’s C
 
 ### Prior Work: 
  - "Solar Eruptive Events: Coronal Dimming and a New CubeSat Mission" - Ph.D dissertation by James Paul Mason, University of Colorado at Boulder (https://scholar.colorado.edu/asen_gradetds/157/)
- - SOHO LASCO CME [catalog](https://cdaw.gsfc.nasa.gov/CME_list/UNIVERSAL/2010_05/univ2010_05.html)
+ - SOHO LASCO CME [catalog](https://cdaw.gsfc.nasa.gov/CME_list/)
 
 ## TODO: Link to the video demonstration
 11_StealthCMEDetection_Part5.(extension)
