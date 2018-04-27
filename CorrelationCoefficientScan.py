@@ -25,13 +25,16 @@ __author__ = 'Tyler J Albee & Shawn A Polson'
 __contact__ = 'tyal7988@colorado.edu'
 
 
-def correlationCoefficientScan(output_path='/Users/tyleralbee/Desktop/StealthCME', verbose=True):
+def correlationCoefficientScan(output_path='/Users/tyleralbee/Desktop/StealthCME', 
+                               eve_data_path='/Users/tyleralbee/Desktop/savesets/eve_selected_lines.csv',
+                               cme_signature='/Users/tyleralbee/Desktop/savesets/eve_lines_event_percents_fitted.csv',
+                               verbose=True):
 
-    eve_lines = pd.read_csv('/Users/tyleralbee/Desktop/StealthCME/eve_selected_lines.csv', index_col=0)
+    eve_lines = pd.read_csv(eve_data_path, index_col=0)
     eve_lines.index = pd.to_datetime(eve_lines.index)
     wholeDfLength = eve_lines.__len__()
 
-    cme_event = pd.read_csv('/Users/tyleralbee/Desktop/StealthCME/eve_lines_event_percents_fitted.csv', index_col=0)
+    cme_event = pd.read_csv(cme_signature, index_col=0)
     cme_event.index = pd.to_datetime(cme_event.index)
     cmeEventLength = cme_event.__len__()
 
@@ -50,7 +53,6 @@ def correlationCoefficientScan(output_path='/Users/tyleralbee/Desktop/StealthCME
     output_table.to_csv(csv_filename, header=True, index=False, mode='w')
 
     if verbose:
-        #logger.info('Created output row definition.')
         logger.info('Created output table definition.')
 
     # Start a progress bar
@@ -59,6 +61,7 @@ def correlationCoefficientScan(output_path='/Users/tyleralbee/Desktop/StealthCME
     startRow = 0
     endRow = cmeEventLength
     numSlices = int(wholeDfLength/cmeEventLength)
+    output_row = 1
 
     progress_bar_sliding_window = progressbar.ProgressBar(widgets=[progressbar.FormatLabel('Correlation Coefficient Analysis ')] + widgets,
                                                    max_value=numSlices).start()
@@ -133,7 +136,8 @@ def correlationCoefficientScan(output_path='/Users/tyleralbee/Desktop/StealthCME
             dsColumn1.reset_index(drop=True, inplace=True) # prevent NaNs from appearing in join
             dsColumn2.reset_index(drop=True, inplace=True) # prevent NaNs from appearing in join
 
-            n = int(dsColumn1.count())  # TODO: assert that both columns have same count?
+            # TODO: assert that both columns have same count?
+            n = int(dsColumn1.count())
             meanA = float(dsColumn1.mean())
             meanB = float(dsColumn2.mean())
             stdA = float(dsColumn1.std(ddof=0))
@@ -157,10 +161,11 @@ def correlationCoefficientScan(output_path='/Users/tyleralbee/Desktop/StealthCME
         eventStartTime = event_time_slice.iloc[0].name
         eventEndTime = event_time_slice.iloc[-1].name
 
-        if not math.isnan(totalCorrelationCoefficient):
-            output_table.loc[i] = [i, eventStartTime, eventEndTime, totalCorrelationCoefficient]
+        if not math.isnan(totalCorrelationCoefficient) and totalCorrelationCoefficient >= 4.2:
+            output_table.loc[output_row] = [output_row, eventStartTime, eventEndTime, totalCorrelationCoefficient]
             csv_filename = output_path + 'cc_output_{0}.csv'.format(Time.now().iso)
             output_table.to_csv(csv_filename, header=True, index=False, mode='w')
+            output_row = output_row + 1
 
         startRow = startRow + 60  # advance time window by 1 hour
         endRow = endRow + 60      # advance time window by 1 hour
@@ -168,53 +173,9 @@ def correlationCoefficientScan(output_path='/Users/tyleralbee/Desktop/StealthCME
 
 
 
-
-
-# def convertIrradiancesToPercents(event_time_slice):
-#     preflare_irradiance = event_time_slice.iloc[0]
-#     event_time_slice_percentages = (event_time_slice - preflare_irradiance) / preflare_irradiance * 100.0
-#     event_time_slice = event_time_slice_percentages
-#
-#
-# def fitLightCurves(eve_lines_event_time_slice):
-#     print("Nothing")
-
-# def computeCorrelationCoefficient(eve_lines_event_time_slice, cme_event):
-#     totalCorrelationCoefficient = 0
-#     ds1 = eve_lines_event_time_slice
-#     ds2 = cme_event
-#
-#     # Gather stats for correlation
-#     for i, column in enumerate(ds1):
-#         dsColumn1 = ds1[column]
-#         dsColumn2 = ds2[column]
-#         n = int(dsColumn1.count())  # TODO: assert that both columns have same count?
-#         meanA = float(dsColumn1.mean())
-#         meanB = float(dsColumn2.mean())
-#         stdA = float(dsColumn1.std(ddof=0))
-#         stdB = float(dsColumn2.std(ddof=0))
-#
-#         # Generate correlation output
-#         dsJoined = pd.concat([dsColumn1, dsColumn2], axis=1)
-#         dsJoined.columns = ['a', 'b']  # Avoids ambiguity when both attribute names are the same
-#         numerator = 0.0  # Stores summation of (a_i - meanA)(b_i - meanB)
-#         denominator = n * stdA * stdB
-#
-#         for index, row in dsJoined.iterrows():
-#             a = row['a']
-#             b = row['b']
-#             numerator = numerator + (a - meanA) * (b - meanB)
-#
-#         correlationCoefficient = numerator / denominator
-#         totalCorrelationCoefficient = totalCorrelationCoefficient + correlationCoefficient
-#
-#     print(totalCorrelationCoefficient)
-
-
-
 if __name__ == "__main__":
-    print("CorrelationCoefficientAnalysis.py is being run directly")
+    print("CorrelationCoefficientScan.py is being run directly")
     correlationCoefficientScan(verbose=True)
 
 else:
-    print("CorrelationCoefficientAnalysis.py is being imported into another module")
+    print("CorrelationCoefficientScan.py is being imported into another module")
